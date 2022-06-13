@@ -17,8 +17,7 @@ on:
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "develop" ]
-  schedule:
-    - cron: '15 19 * * 3'
+  workflow_dispatch: 
 
 jobs:
   analyze:
@@ -41,6 +40,7 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: javascript
+        config-file: .github/codeql-config.yml
         packs: codeql/javascript-queries:Security/CWE-079
         
         # If you wish to specify custom queries, you can do so here or in a config file.
